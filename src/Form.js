@@ -4,6 +4,8 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
+const PLATFORMS = ["Piazza", "Canvas", "OH"];
+
 export default class LearnForm extends React.Component {
     constructor(props) {
         super(props);
@@ -32,9 +34,9 @@ export default class LearnForm extends React.Component {
                         ))}
                     </ListGroup>
                     <DropdownButton id="dropdown-basic-button" title={this.state.selected}>
-                        <Dropdown.Item onClick={this.onClick}>Piazza</Dropdown.Item>
-                        <Dropdown.Item onClick={this.onClick}>Canvas</Dropdown.Item>
-                        <Dropdown.Item onClick={this.onClick}>OH</Dropdown.Item>
+                        {PLATFORMS.map(p => (
+                            <Dropdown.Item onClick={this.onClick}>{p}</Dropdown.Item>
+                        ))}
                     </DropdownButton>
                 </Card.Body>
             </Card>
