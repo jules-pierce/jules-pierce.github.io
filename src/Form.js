@@ -9,35 +9,15 @@ export default class LearnForm extends React.Component {
         super(props);
         this.state = { platforms: ["Piazza"], selected: "Select a Platform" };
 
-        this.onPiazzaClick = this.onPiazzaClick.bind(this);
-        this.onCanvasClick = this.onCanvasClick.bind(this);
-        this.onOHClick = this.onOHClick.bind(this);
+        this.onClick = this.onClick.bind(this);
     }
 
-    onPiazzaClick() {
-        console.log("piazza clicked");
-        const list = this.state.platforms.concat("Piazza");
+    onClick(e) {
+        const platform = e.target.innerText;
+        const list = this.state.platforms.concat(platform);
         this.setState({
             platforms: list,
-            selected: "Piazza"
-        });
-    }
-
-    onCanvasClick() {
-        console.log("canvas clicked");
-        const list = this.state.platforms.concat("Canvas");
-        this.setState({
-            platforms: list,
-            selected: "Canvas"
-        });
-    }
-
-    onOHClick() {
-        console.log("oh clicked");
-        const list = this.state.platforms.concat("OH");
-        this.setState({
-            platforms: list,
-            selected: "OH"
+            selected: platform
         });
     }
 
@@ -52,9 +32,9 @@ export default class LearnForm extends React.Component {
                         ))}
                     </ListGroup>
                     <DropdownButton id="dropdown-basic-button" title={this.state.selected}>
-                        <Dropdown.Item onClick={this.onPiazzaClick}>Piazza</Dropdown.Item>
-                        <Dropdown.Item onClick={this.onCanvasClick}>Canvas</Dropdown.Item>
-                        <Dropdown.Item onClick={this.onOHClick}>OH</Dropdown.Item>
+                        <Dropdown.Item onClick={this.onClick}>Piazza</Dropdown.Item>
+                        <Dropdown.Item onClick={this.onClick}>Canvas</Dropdown.Item>
+                        <Dropdown.Item onClick={this.onClick}>OH</Dropdown.Item>
                     </DropdownButton>
                 </Card.Body>
             </Card>
