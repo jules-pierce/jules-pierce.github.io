@@ -20,6 +20,7 @@ export default class LearnForm extends React.Component {
         this.onDragEnd = this.onDragEnd.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.findImprovement = this.findImprovement.bind(this);
+        this.removeItem = this.removeItem.bind(this);
     }
 
     onClick(e) {
@@ -47,7 +48,7 @@ export default class LearnForm extends React.Component {
     }
 
     findImprovement(trajectory) {
-        const ideal = ["canvas", "oh", "codio", "piazza"];
+        const ideal = ["piazza", "canvas", "codio"];
 
         // check single relationships
         for (var i = 0; i < ideal.length; i++) {
@@ -66,6 +67,16 @@ export default class LearnForm extends React.Component {
                 }
             }
         }
+    }
+
+    removeItem(index) {
+        console.log("removing " + index);
+
+        const new_platforms = Array.from(this.state.platforms);
+        new_platforms.splice(index, 1);
+        this.setState({
+            platforms: new_platforms
+        });
     }
 
     onSubmit() {
@@ -105,6 +116,7 @@ export default class LearnForm extends React.Component {
             <Card>
                 <Card.Header>Fill out this form!</Card.Header>
                 <Card.Body>
+
                     <DragDropContext onDragEnd={this.onDragEnd}>
                         <Droppable droppableId="droppable">
                             {(provided, snapshot) => (
@@ -114,7 +126,7 @@ export default class LearnForm extends React.Component {
                                     {...provided.droppableProps}
                                 >
                                     {this.state.platforms.map((platform, index) => (
-                                        <PlatformItem name={platform} index={index} />
+                                        <PlatformItem name={platform} index={index} remove={this.removeItem} />
                                     ))}
                                     {provided.placeholder}
                                 </ListGroup>
@@ -122,12 +134,14 @@ export default class LearnForm extends React.Component {
 
                         </Droppable>
                     </DragDropContext>
+
                     <DropdownButton variant="outline-primary" as={ButtonGroup} id="dropdown-basic-button" title={this.state.selected}>
                         {PLATFORMS.map(p => (
                             <Dropdown.Item onClick={this.onClick}>{p}</Dropdown.Item>
                         ))}
                     </DropdownButton> {' '}
                     <Button variant="outline-primary" as={ButtonGroup} onClick={this.onSubmit}>Submit</Button>
+
                     <p>{this.state.suggestion}</p>
                 </Card.Body>
             </Card>
