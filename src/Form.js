@@ -8,13 +8,16 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import * as classNames from 'classnames';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const PLATFORMS = ["Check Piazza", "Watch Lecture Video", "Attend office hours", "Start homework"];
 
 export default class LearnForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { platforms: [], selected: "Select a Platform", suggestion: "" };
+        this.state = { selected: "Select a Platform", suggestion: "" };
 
         this.onClick = this.onClick.bind(this);
         this.onDragEnd = this.onDragEnd.bind(this);
@@ -25,11 +28,11 @@ export default class LearnForm extends React.Component {
 
     onClick(e) {
         const platform = e.target.innerText;
-        const list = this.state.platforms.concat(platform);
+        const list = this.props.getTraj().concat(platform);
         this.setState({
-            platforms: list,
             selected: platform
         });
+        this.props.setTraj(list);
     }
 
     onDragEnd(result) {
@@ -38,13 +41,11 @@ export default class LearnForm extends React.Component {
             return;
         }
 
-        const new_platforms = Array.from(this.state.platforms);
+        const new_platforms = Array.from(this.props.getTraj());
         const [removed] = new_platforms.splice(result.source.index, 1);
         new_platforms.splice(result.destination.index, 0, removed);
 
-        this.setState({
-            platforms: new_platforms
-        });
+        this.props.setTraj(new_platforms);
     }
 
     findImprovement(trajectory) {
@@ -72,15 +73,13 @@ export default class LearnForm extends React.Component {
     removeItem(index) {
         console.log("removing " + index);
 
-        const new_platforms = Array.from(this.state.platforms);
+        const new_platforms = Array.from(this.props.getTraj());
         new_platforms.splice(index, 1);
-        this.setState({
-            platforms: new_platforms
-        });
+        this.props.setTraj(new_platforms);
     }
 
     onSubmit() {
-        const platforms = this.state.platforms;
+        const platforms = this.props.getTraj();
         var res = [];
         const piazzaFound = false;
         const ohFound = false;
@@ -113,38 +112,43 @@ export default class LearnForm extends React.Component {
 
     render() {
         return (
-            <Card>
-                <Card.Header>Fill out this form!</Card.Header>
-                <Card.Body>
+            <Container className="mt-5">
+                <Row className="justify-content-md-center">
+                    <Col md="auto">
+                        <Card className="text-center">
+                            <Card.Header>Please enter the order in which you use resources.</Card.Header>
+                            <Card.Body>
+                                <DragDropContext onDragEnd={this.onDragEnd}>
+                                    <Droppable droppableId="droppable">
+                                        {(provided, snapshot) => (
+                                            <ListGroup
+                                                ref={provided.innerRef}
+                                                className={classNames('list', snapshot.isDraggingOver && 'draggingOver')}
+                                                {...provided.droppableProps}
+                                            >
+                                                {this.props.getTraj().map((platform, index) => (
+                                                    <PlatformItem name={platform} index={index} remove={this.removeItem} />
+                                                ))}
+                                                {provided.placeholder}
+                                            </ListGroup>
+                                        )}
 
-                    <DragDropContext onDragEnd={this.onDragEnd}>
-                        <Droppable droppableId="droppable">
-                            {(provided, snapshot) => (
-                                <ListGroup
-                                    ref={provided.innerRef}
-                                    className={classNames('list', snapshot.isDraggingOver && 'draggingOver')}
-                                    {...provided.droppableProps}
-                                >
-                                    {this.state.platforms.map((platform, index) => (
-                                        <PlatformItem name={platform} index={index} remove={this.removeItem} />
+                                    </Droppable>
+                                </DragDropContext>
+
+                                <DropdownButton className="mt-4" variant="outline-primary" as={ButtonGroup} id="dropdown-basic-button" title={this.state.selected} block>
+                                    {PLATFORMS.map(p => (
+                                        <Dropdown.Item onClick={this.onClick}>{p}</Dropdown.Item>
                                     ))}
-                                    {provided.placeholder}
-                                </ListGroup>
-                            )}
+                                </DropdownButton>
+                                <Button variant="outline-primary" as={ButtonGroup} onClick={this.onSubmit}>Submit</Button>
 
-                        </Droppable>
-                    </DragDropContext>
-
-                    <DropdownButton variant="outline-primary" as={ButtonGroup} id="dropdown-basic-button" title={this.state.selected}>
-                        {PLATFORMS.map(p => (
-                            <Dropdown.Item onClick={this.onClick}>{p}</Dropdown.Item>
-                        ))}
-                    </DropdownButton> {' '}
-                    <Button variant="outline-primary" as={ButtonGroup} onClick={this.onSubmit}>Submit</Button>
-
-                    <p>{this.state.suggestion}</p>
-                </Card.Body>
-            </Card>
+                                <p>{this.state.suggestion}</p>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 }

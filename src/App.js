@@ -2,6 +2,7 @@ import React from 'react';
 import LearnForm from './Form';
 import Graph from './Graphs';
 import About from './About';
+import ShowTraj from './ShowTraj';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar';
 import { JournalCode } from 'react-bootstrap-icons';
@@ -15,8 +16,22 @@ import {
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { trajectory: [] }
 
+    this.changeTrajectory = this.changeTrajectory.bind(this);
+    this.getTrajectory = this.getTrajectory.bind(this);
   }
+
+  changeTrajectory(platforms) {
+    this.setState({
+      trajectory: platforms
+    });
+  }
+
+  getTrajectory() {
+    return this.state.trajectory;
+  }
+
   render() {
     return (
       <div className="App">
@@ -38,7 +53,7 @@ export default class App extends React.Component {
             <Route
               exact
               path="/"
-              render={() => <LearnForm />}
+              render={() => <LearnForm setTraj={this.changeTrajectory} getTraj={this.getTrajectory} />}
             />
             <Route
               exact
@@ -54,6 +69,11 @@ export default class App extends React.Component {
               exact
               path="/about"
               render={() => <About />}
+            />
+            <Route
+              exact
+              path="/trajectory"
+              render={() => <ShowTraj />}
             />
           </Switch>
         </Router>
