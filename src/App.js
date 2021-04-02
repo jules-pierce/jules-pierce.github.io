@@ -16,10 +16,11 @@ import {
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { trajectory: [] }
+    this.state = { trajectory: [], home: <div /> }
 
     this.changeTrajectory = this.changeTrajectory.bind(this);
     this.getTrajectory = this.getTrajectory.bind(this);
+    this.showTraj = this.showTraj.bind(this);
   }
 
   changeTrajectory(platforms) {
@@ -30,6 +31,18 @@ export default class App extends React.Component {
 
   getTrajectory() {
     return this.state.trajectory;
+  }
+
+  componentDidMount() {
+    this.setState({
+      home: <LearnForm setTraj={this.changeTrajectory} getTraj={this.getTrajectory} showTraj={this.showTraj} />
+    });
+  }
+
+  showTraj() {
+    this.setState({
+      home: <ShowTraj />
+    });
   }
 
   render() {
@@ -53,7 +66,7 @@ export default class App extends React.Component {
             <Route
               exact
               path="/"
-              render={() => <LearnForm setTraj={this.changeTrajectory} getTraj={this.getTrajectory} />}
+              render={() => this.state.home}
             />
             <Route
               exact

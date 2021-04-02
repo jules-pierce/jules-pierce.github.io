@@ -108,6 +108,8 @@ export default class LearnForm extends React.Component {
         this.setState({
             suggestion: suggestion
         });
+
+        this.props.showTraj();
     }
 
     render() {
