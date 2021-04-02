@@ -70,11 +70,6 @@ export default class App extends React.Component {
             />
             <Route
               exact
-              path="/form"
-              render={() => <LearnForm />}
-            />
-            <Route
-              exact
               path="/graphs"
               render={() => <Graph />}
             />
@@ -82,11 +77,6 @@ export default class App extends React.Component {
               exact
               path="/about"
               render={() => <About />}
-            />
-            <Route
-              exact
-              path="/trajectory"
-              render={() => <ShowTraj />}
             />
           </Switch>
         </Router>

@@ -118,34 +118,45 @@ export default class LearnForm extends React.Component {
                 <Row className="justify-content-md-center">
                     <Col md="auto">
                         <Card className="text-center">
-                            <Card.Header>Please enter the order in which you use resources.</Card.Header>
+                            <Card.Header as="h5">Please enter the order in which you use resources.</Card.Header>
                             <Card.Body>
-                                <DragDropContext onDragEnd={this.onDragEnd}>
-                                    <Droppable droppableId="droppable">
-                                        {(provided, snapshot) => (
-                                            <ListGroup
-                                                ref={provided.innerRef}
-                                                className={classNames('list', snapshot.isDraggingOver && 'draggingOver')}
-                                                {...provided.droppableProps}
-                                            >
-                                                {this.props.getTraj().map((platform, index) => (
-                                                    <PlatformItem name={platform} index={index} remove={this.removeItem} />
+                                <Container fluid>
+                                    <Row className="justify-content-md-center">
+                                        <Col>
+                                            <DragDropContext onDragEnd={this.onDragEnd}>
+                                                <Droppable droppableId="droppable">
+                                                    {(provided, snapshot) => (
+                                                        <ListGroup
+                                                            ref={provided.innerRef}
+                                                            className={classNames('list', snapshot.isDraggingOver && 'draggingOver')}
+                                                            {...provided.droppableProps}
+                                                        >
+                                                            {this.props.getTraj().map((platform, index) => (
+                                                                <PlatformItem name={platform} index={index} remove={this.removeItem} />
+                                                            ))}
+                                                            {provided.placeholder}
+                                                        </ListGroup>
+                                                    )}
+
+                                                </Droppable>
+                                            </DragDropContext>
+                                        </Col>
+                                    </Row>
+                                    <Row className="justify-content-md-center">
+                                        <Col>
+                                            <DropdownButton className="mt-4" variant="outline-primary" as={ButtonGroup} id="dropdown-basic-button" title={this.state.selected} block>
+                                                {PLATFORMS.map(p => (
+                                                    <Dropdown.Item onClick={this.onClick}>{p}</Dropdown.Item>
                                                 ))}
-                                                {provided.placeholder}
-                                            </ListGroup>
-                                        )}
-
-                                    </Droppable>
-                                </DragDropContext>
-
-                                <DropdownButton className="mt-4" variant="outline-primary" as={ButtonGroup} id="dropdown-basic-button" title={this.state.selected} block>
-                                    {PLATFORMS.map(p => (
-                                        <Dropdown.Item onClick={this.onClick}>{p}</Dropdown.Item>
-                                    ))}
-                                </DropdownButton>
-                                <Button variant="outline-primary" as={ButtonGroup} onClick={this.onSubmit}>Submit</Button>
-
-                                <p>{this.state.suggestion}</p>
+                                            </DropdownButton>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col>
+                                            <Button className="float-right" variant="outline-primary" as={ButtonGroup} onClick={this.onSubmit}>Submit</Button>
+                                        </Col>
+                                    </Row>
+                                </Container>
                             </Card.Body>
                         </Card>
                     </Col>
