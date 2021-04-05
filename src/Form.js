@@ -45,7 +45,25 @@ export default class LearnForm extends React.Component {
             <Container className="mt-5">
                 <Row className="justify-content-md-center">
                     <Col>
-                        <h5>Please enter the order in which you use resources.</h5>
+                        <h4>Please enter the order in which you use resources.</h4>
+                    </Col>
+                </Row>
+                <Row className="justify-content-md-center">
+                    <Col>
+                        <p>
+                            A "learning trajectory" is the order in which you use resources to achieve your eventual goal -
+                            for most CS classes, that goal is a homework assignment or project. Learning trajectories are
+                            specific to individuals, and what works well for one person might not work well for another. However,
+                            we have identified a few learning trajectories that have appeared to be ideal, and this website will
+                            analyze your current learning trajectory and point you towards an ideal learning trajectory which you
+                            are closest to.
+                        </p>
+                        <p>
+                            On this page, start by inputting your typical process of tackling a homework. If you use a resource multiple
+                            times in a day, base the order on the first time you use that resource in a day. In the blocks below, use the
+                            drop down menus to choose which platforms to add. You can drag them around to re-arrange them if you need. When
+                            you're done, click the Submit button to see what we suggest for you!
+                        </p>
                     </Col>
                 </Row>
                 <Row>
@@ -56,8 +74,7 @@ export default class LearnForm extends React.Component {
                     ))}
                 </Row>
                 <Row>
-                    <Col>
-
+                    <Col className="mt-2">
                         <Button className="float-right" variant="outline-primary" as={ButtonGroup} onClick={this.onSubmit}>Submit</Button>
                     </Col>
                 </Row>
