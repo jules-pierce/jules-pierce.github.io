@@ -41,7 +41,7 @@ export default class App extends React.Component {
 
   showTraj() {
     this.setState({
-      home: <ShowTraj />
+      home: <ShowTraj traj={this.state.trajectory} />
     });
   }
 

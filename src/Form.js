@@ -116,7 +116,7 @@ export default class LearnForm extends React.Component {
         return (
             <Container className="mt-5">
                 <Row className="justify-content-md-center">
-                    <Col md="auto">
+                    <Col>
                         <Card className="text-center">
                             <Card.Header as="h5">Please enter the order in which you use resources.</Card.Header>
                             <Card.Body>
