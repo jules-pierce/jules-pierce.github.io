@@ -12,7 +12,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const PLATFORMS = ["Check Piazza", "Watch Lecture Video", "Attend office hours", "Start homework"];
+const PLATFORMS = ["Check Piazza", "Watch Lecture Video", "Attend office hours", "Homework"];
 
 export default class LearnForm extends React.Component {
     constructor(props) {

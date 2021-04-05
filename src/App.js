@@ -3,6 +3,7 @@ import LearnForm from './Form';
 import Graph from './Graphs';
 import About from './About';
 import ShowTraj from './ShowTraj';
+import ShowAdvice from './ShowAdvice';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar';
 import { JournalCode } from 'react-bootstrap-icons';
@@ -21,6 +22,7 @@ export default class App extends React.Component {
     this.changeTrajectory = this.changeTrajectory.bind(this);
     this.getTrajectory = this.getTrajectory.bind(this);
     this.showTraj = this.showTraj.bind(this);
+    this.showAdvice = this.showAdvice.bind(this);
   }
 
   changeTrajectory(platforms) {
@@ -41,8 +43,14 @@ export default class App extends React.Component {
 
   showTraj() {
     this.setState({
-      home: <ShowTraj traj={this.state.trajectory} />
+      home: <ShowTraj traj={this.state.trajectory} next={this.showAdvice} />
     });
+  }
+
+  showAdvice() {
+    this.setState({
+      home: <ShowAdvice traj={this.state.trajectory} />
+    })
   }
 
   render() {
