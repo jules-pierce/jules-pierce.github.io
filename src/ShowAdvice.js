@@ -13,6 +13,22 @@ const IDEAL = {
     4: ['Co', 'O', 'P', 'P', 'P', 'P', 'P', 'P', 'P']
 };
 
+const EXAMPLES = {
+    1: "An example implementation for this learning trajectory is to start out by trying the homework on Saturday, \
+    take a break and try the homework again on Monday, and then attend office hours on Monday to get help, and after \
+    office hours look on Piazza a little bit for a new problem you encounter. Then on Tuesday, maybe you're wondering \
+    something so you come back and look at Piazza a little more.",
+    2: "An example implementation for this learning trajectory is to start out by trying the homework on Saturday \
+    and looking at Piazza for guidance, and then keeping an eye on Piazza over the next 5 days to see if anything important \
+    is announced.",
+    3: "An example implementation for this learning trajectory is to start out by watching the lecture videos on Saturday, \
+    then start the homework on Sunday and look at Piazza for guidance, and then keeping an eye on Piazza over the next 6 days \
+    to see if anything important is announced.",
+    4: "An example implementation of this learning trajectory is to start out by attempting the homework on Monday, and go to \
+    Office Hours and read Piazza to get some help starting it out. Then keep an eye on Piazza over the next 6 days to see if anything\
+    important is announced."
+}
+
 export default class ShowAdvice extends React.Component {
     constructor(props) {
         super(props);
@@ -33,12 +49,14 @@ export default class ShowAdvice extends React.Component {
 
         var min = [];
         var minVal = Infinity;
+        var example = "";
 
         for (let k in IDEAL) {
             var v = this.calculateDistance(res, IDEAL[k], 0, 0, 0);
             if (v < minVal) {
                 minVal = v;
                 min = IDEAL[k];
+                example = EXAMPLES[k];
             }
         }
 
@@ -57,7 +75,8 @@ export default class ShowAdvice extends React.Component {
 
 
         this.state = {
-            ideal: ideal
+            ideal: ideal,
+            example: example
         };
     }
 
@@ -86,17 +105,30 @@ export default class ShowAdvice extends React.Component {
                 <Row className="justify-content-md-center">
                     <Col>
                         <Card className="text-center">
-                            <Card.Header as="h5">Great!</Card.Header>
+                            <Card.Header as="h5">Here is our advice!</Card.Header>
                             <Card.Body>
                                 <Container fluid>
                                     <Row className="justify-content-md-center">
                                         <Col>
-                                            <Card.Title> Here is an optimal learning trajectory, close to what you currently do. </Card.Title>
+                                            <p>
+                                                Here is the closest ideal trajectory we found for you! The order given below is an absolute ordering -
+                                                if you choose to try it, feel free to break it up into days as you see fit. Click the button at the bottom
+                                                if you'd like to see more of our research!
+                                            </p>
+                                            <p className="text-muted">
+                                                Note: if a platform occurs twice, that means the ideal trajectory would do that thing twice, on
+                                                different days.
+                                            </p>
                                             {<ListGroup className="pb-2">
                                                 {this.state.ideal.map((p, i) => (
                                                     <ListGroup.Item>{p}</ListGroup.Item>
                                                 ))}
                                             </ListGroup>}
+                                        </Col>
+                                    </Row>
+                                    <Row className="justify-content-md-center">
+                                        <Col>
+                                            <p>{this.state.example}</p>
                                         </Col>
                                     </Row>
                                     <Row>
