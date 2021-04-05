@@ -6,7 +6,6 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import PlatformItem from './PlatformItem';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import * as classNames from 'classnames';
-import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -18,7 +17,7 @@ export default class Day extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { selected: "Select a Platform" }
+        this.state = { platforms_remaining: ["Check Piazza", "Watch Lecture Video", "Attend office hours", "Homework"] }
 
         this.onDragEnd = this.onDragEnd.bind(this);
         this.onClick = this.onClick.bind(this);
@@ -28,8 +27,11 @@ export default class Day extends React.Component {
     onClick(e) {
         const platform = e.target.innerText;
         const list = this.props.getTraj(this.props.index).concat(platform);
+        const platforms = this.state.platforms_remaining;
+        const index = platforms.indexOf(platform);
+        platforms.splice(index, 1);
         this.setState({
-            selected: platform
+            platforms_remaining: platforms
         });
         this.props.setTraj(this.props.index, list);
     }
@@ -84,8 +86,8 @@ export default class Day extends React.Component {
                         </Row>
                         <Row className="justify-content-md-center">
                             <Col>
-                                <DropdownButton className="mt-4" variant="outline-primary" as={ButtonGroup} id="dropdown-basic-button" title={this.state.selected} block>
-                                    {PLATFORMS.map(p => (
+                                <DropdownButton className="mt-4" variant="outline-primary" as={ButtonGroup} id="dropdown-basic-button" title="Select a Platform" block>
+                                    {this.state.platforms_remaining.map(p => (
                                         <Dropdown.Item onClick={this.onClick}>{p}</Dropdown.Item>
                                     ))}
                                 </DropdownButton>
