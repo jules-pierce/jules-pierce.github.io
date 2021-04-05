@@ -17,12 +17,15 @@ export default class ShowTraj extends React.Component {
                 <Row classname="justify-content-md-center">
                     <Col>
                         <Card className="text-center">
-                            <Card.Header as="h5">Great!</Card.Header>
+                            <Card.Header as="h4">Here is your current learning trajectory</Card.Header>
                             <Card.Body>
                                 <Container fluid>
                                     <Row className="justify-content-md-center">
                                         <Col>
-                                            <Card.Title> Here is your current learning trajectory. </Card.Title>
+                                            <p>
+                                                We've condensed your learning trajectory down to one list of items, following the order you input them on
+                                                the last page. Click Next to see our recommendation for you!
+                                            </p>
                                             <ListGroup className="pb-2">
                                                 {this.props.traj.map((p, i) => (
                                                     <ListGroup.Item>{p}</ListGroup.Item>
