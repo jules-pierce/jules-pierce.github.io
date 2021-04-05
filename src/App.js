@@ -19,31 +19,20 @@ export default class App extends React.Component {
     super(props);
     this.state = { trajectory: [], home: <div /> }
 
-    this.changeTrajectory = this.changeTrajectory.bind(this);
-    this.getTrajectory = this.getTrajectory.bind(this);
     this.showTraj = this.showTraj.bind(this);
     this.showAdvice = this.showAdvice.bind(this);
   }
 
-  changeTrajectory(platforms) {
-    this.setState({
-      trajectory: platforms
-    });
-  }
-
-  getTrajectory() {
-    return this.state.trajectory;
-  }
-
   componentDidMount() {
     this.setState({
-      home: <LearnForm setTraj={this.changeTrajectory} getTraj={this.getTrajectory} showTraj={this.showTraj} />
+      home: <LearnForm showTraj={this.showTraj} />
     });
   }
 
-  showTraj() {
+  showTraj(traj) {
     this.setState({
-      home: <ShowTraj traj={this.state.trajectory} next={this.showAdvice} />
+      trajectory: traj,
+      home: <ShowTraj traj={traj} next={this.showAdvice} />
     });
   }
 

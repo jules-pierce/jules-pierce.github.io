@@ -26,7 +26,7 @@ export default class ShowAdvice extends React.Component {
                 res = res.concat("Ca");
             } else if (platforms[i] == "Attend office hours") {
                 res = res.concat("O");
-            } else if (platforms[i] == "Jomework") {
+            } else if (platforms[i] == "Homework") {
                 res = res.concat("Co");
             }
         }
@@ -83,7 +83,7 @@ export default class ShowAdvice extends React.Component {
     render() {
         return (
             <Container className="mt-5">
-                <Row classname="justify-content-md-center">
+                <Row className="justify-content-md-center">
                     <Col>
                         <Card className="text-center">
                             <Card.Header as="h5">Great!</Card.Header>
