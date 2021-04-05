@@ -2,6 +2,7 @@ import React from 'react';
 import LearnForm from './Form';
 import Graph from './Graphs';
 import About from './About';
+import FAQ from './FAQ';
 import ShowTraj from './ShowTraj';
 import ShowAdvice from './ShowAdvice';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -52,8 +53,9 @@ export default class App extends React.Component {
            </Navbar.Brand>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/form">Get Feedback</Nav.Link>
+              <Nav.Link href="/">Get Feedback</Nav.Link>
               <Nav.Link href="/graphs">Graphs</Nav.Link>
+              <Nav.Link href="/faq">FAQ</Nav.Link>
               <Nav.Link href="/about">About Us</Nav.Link>
             </Nav>
           </Navbar.Collapse>
@@ -74,6 +76,11 @@ export default class App extends React.Component {
               exact
               path="/about"
               render={() => <About />}
+            />
+            <Route
+              exact
+              path="/faq"
+              render={() => <FAQ />}
             />
           </Switch>
         </Router>
