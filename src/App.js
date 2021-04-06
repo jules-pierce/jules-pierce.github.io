@@ -54,7 +54,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="dark" variant="dark" sticky="top">
           <Navbar.Brand>
             <JournalCode /> {' '}
              Improve your Study Skills!
@@ -64,13 +64,7 @@ export default class App extends React.Component {
               <Nav.Link href="/">Optimize my Learning</Nav.Link>
               <Nav.Link href="/#/graphs">Graphs</Nav.Link>
               <Nav.Link href="/#/faq">FAQ</Nav.Link>
-              <NavDropdown title="About Us" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/#/about#team">The Team</NavDropdown.Item>
-                <NavDropdown.Item href="/#/about#study">The Study</NavDropdown.Item>
-                <NavDropdown.Item href="/#/about#background">Background</NavDropdown.Item>
-                <NavDropdown.Item href="/#/about#design">Methodology and Design</NavDropdown.Item>
-                <NavDropdown.Item href="/#/about#next">Next Steps</NavDropdown.Item>
-              </NavDropdown>
+              <Nav.Link href="/#/about">About Us</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
