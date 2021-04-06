@@ -10,7 +10,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { JournalCode } from 'react-bootstrap-icons';
 import { Nav } from 'react-bootstrap';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Switch
 } from 'react-router-dom';
@@ -62,14 +62,14 @@ export default class App extends React.Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               <Nav.Link href="/">Optimize my Learning</Nav.Link>
-              <Nav.Link href="/graphs">Graphs</Nav.Link>
-              <Nav.Link href="/faq">FAQ</Nav.Link>
+              <Nav.Link href="/#/graphs">Graphs</Nav.Link>
+              <Nav.Link href="/#/faq">FAQ</Nav.Link>
               <NavDropdown title="About Us" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/about#team">The Team</NavDropdown.Item>
-                <NavDropdown.Item href="/about#study">The Study</NavDropdown.Item>
-                <NavDropdown.Item href="/about#background">Background</NavDropdown.Item>
-                <NavDropdown.Item href="/about#design">Methodology and Design</NavDropdown.Item>
-                <NavDropdown.Item href="/about#next">Next Steps</NavDropdown.Item>
+                <NavDropdown.Item href="/#/about#team">The Team</NavDropdown.Item>
+                <NavDropdown.Item href="/#/about#study">The Study</NavDropdown.Item>
+                <NavDropdown.Item href="/#/about#background">Background</NavDropdown.Item>
+                <NavDropdown.Item href="/#/about#design">Methodology and Design</NavDropdown.Item>
+                <NavDropdown.Item href="/#/about#next">Next Steps</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
@@ -83,7 +83,7 @@ export default class App extends React.Component {
             />
             <Route
               exact
-              path={process.env.PUBLIC_URL + "/graphs"}
+              path="/graphs"
               render={() => <Graph />}
             />
             <Route

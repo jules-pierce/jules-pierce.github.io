@@ -154,7 +154,7 @@ export default class ShowAdvice extends React.Component {
                                             <Button className="float-left" variant="outline-primary" onClick={this.goBack}>Back</Button>
                                         </Col>
                                         <Col>
-                                            <Button className="float-right" variant="outline-primary" href="/graphs">How will changing my trajectory help me?</Button>
+                                            <Button className="float-right" variant="outline-primary" href="/#/graphs">How will changing my trajectory help me?</Button>
                                         </Col>
                                     </Row>
                                 </Container>
