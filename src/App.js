@@ -10,7 +10,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { JournalCode } from 'react-bootstrap-icons';
 import { Nav } from 'react-bootstrap';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Route,
   Switch
 } from 'react-router-dom';
@@ -83,7 +83,7 @@ export default class App extends React.Component {
             />
             <Route
               exact
-              path="/graphs"
+              path={process.env.PUBLIC_URL + "/graphs"}
               render={() => <Graph />}
             />
             <Route
