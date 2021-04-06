@@ -10,7 +10,10 @@ const IDEAL = {
     1: ["Co", 'Co', 'O', 'P', 'P'],
     2: ['Co', 'P', 'P', 'P', 'P', 'P', 'P'],
     3: ['Ca', 'Co', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
-    4: ['Co', 'O', 'P', 'P', 'P', 'P', 'P', 'P', 'P']
+    4: ['Co', 'O', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
+    5: ['Ca', 'Co', 'O', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
+    6: ['Co', 'O', 'P', 'P', 'P', 'P', 'P', 'P'],
+    7: ['Ca', 'Co', 'O', 'P', 'P', 'P', 'P', 'P', 'P'],
 };
 
 const EXAMPLES = {
@@ -26,7 +29,16 @@ const EXAMPLES = {
     to see if anything important is announced.",
     4: "An example implementation of this learning trajectory is to start out by attempting the homework on Monday, and go to \
     Office Hours and read Piazza to get some help starting it out. Then keep an eye on Piazza over the next 6 days to see if anything\
-    important is announced."
+    important is announced.",
+    5: "An example implementation of this learning trajectory is to start out by watching lecture videos on Sunday, then begin the \
+    homework on Monday and go to office hours and read piazza for help, and then keep an eye on Piazza over the next few days for \
+    any important announcements.",
+    6: "An example implementation of this learning trajectory is to start trying the homework on Sunday, but get stuck and head to \
+    office hours on Monday for help. On Monday you might also look up some of your questions on piazza, and then keep an eye on Piazza \
+    over the next few days for any important announcements.",
+    7: "An example implementation of this learning trajectory is to start out by watching lecture videos on Saturday, then start the homework\
+    on Sunday, but maybe you get stuck and go to office hours on Monday. On Monday you can also take a look at Piazza to answer some of \
+    your questions and then keep an eye on Piazza over the next few days for any important announcements."
 }
 
 export default class ShowAdvice extends React.Component {
