@@ -7,6 +7,7 @@ import jules from './imgs/jules.jpg';
 import dana from './imgs/dana.jpg';
 import yash from './imgs/yash.jpg';
 import eric from './imgs/eric.jpg';
+import aarushi from './imgs/aarushi.jpg';
 import CardDeck from 'react-bootstrap/CardDeck';
 
 export default class About extends React.Component {
@@ -20,7 +21,7 @@ export default class About extends React.Component {
                 <h4>The Team</h4>
                 <CardDeck className="mb-4">
                     <Card style={{ width: '18rem' }}>
-                        <Image src={jules} roundedCircle className="m-2" />
+                        <Image src={aarushi} roundedCircle className="m-2" />
                         <Card.Body>
                             <Card.Title>Aarushi Pendharkar</Card.Title>
                             <Card.Text>
