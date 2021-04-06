@@ -61,7 +61,7 @@ export default class App extends React.Component {
            </Navbar.Brand>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/">Get Feedback</Nav.Link>
+              <Nav.Link href="/">Optimize my Learning</Nav.Link>
               <Nav.Link href="/graphs">Graphs</Nav.Link>
               <Nav.Link href="/faq">FAQ</Nav.Link>
               <NavDropdown title="About Us" id="basic-nav-dropdown">
