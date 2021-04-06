@@ -45,7 +45,7 @@ export default class FAQ extends React.Component {
                             trajectories that have led to better student success. Of course, nothing is a sure proof of success,
                             but the following graph shows us which trajectories tend to lead to a higher average grade. The
                             graph shows the trajectories by increasing grade (left to right) for a given homework.
-                            <Image src="/imgs/all-all.png" fluid />
+                            <Image src="/imgs/all-trajectories.png" fluid />
                         </Card.Body>
                     </Accordion.Collapse>
                 </Card>
@@ -107,7 +107,7 @@ export default class FAQ extends React.Component {
                             definitely proven to have a positive effect on students’ average grades across the board.
                             It never hurts to get a fresh understanding on topics like arrays, recursion, and objects that
                             are closely tied to homework assignments.
-                            <Image src="/imgs/hw4-all.png" fluid />
+                            <Image src="/imgs/hw4-trajectories.png" fluid />
                         </Card.Body>
                     </Accordion.Collapse>
                 </Card>
@@ -149,7 +149,7 @@ export default class FAQ extends React.Component {
                             and strategies related to the homework assignment with the TA, and that generally tended to help
                             them and give them clarity towards completing the homework and thoroughly understanding the
                             concepts.
-                            <Image src="/imgs/hw7-all.png" fluid />
+                            <Image src="/imgs/hw7-trajectories.png" fluid />
                         </Card.Body>
                     </Accordion.Collapse>
                 </Card>
