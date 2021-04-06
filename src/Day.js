@@ -51,8 +51,14 @@ export default class Day extends React.Component {
         console.log("removing " + index);
 
         const new_platforms = Array.from(this.props.getTraj(this.props.index));
-        new_platforms.splice(index, 1);
+        const removed = new_platforms.splice(index, 1);
         this.props.setTraj(this.props.index, new_platforms);
+
+        var remaining = this.state.platforms_remaining;
+        remaining = remaining.concat(removed);
+        this.setState({
+            platforms_remaining: remaining
+        });
     }
 
     render() {
