@@ -32,17 +32,17 @@ export default class PlatformItem extends React.Component {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                     >
-                        {this.props.name}
-                        {/* <Container fluid>
-                            <Row>
-                                <Col md="auto">{this.props.name}</Col>
+                        <Container fluid>
+                            <Row className="justify-content-md-center">
+                                <Col sm={1} xl={1}></Col>
+                                <Col className="mt-1">{this.props.name}</Col>
                                 <Col sm={1} xl={1}>
-                                    <Button onClick={this.onRemove} variant="outline-danger">
+                                    <Button onClick={this.onRemove} variant="outline-danger" size="sm">
                                         <X />
                                     </Button>
                                 </Col>
                             </Row>
-                        </Container> */}
+                        </Container>
                     </ListGroup.Item>
                 )
                 }
