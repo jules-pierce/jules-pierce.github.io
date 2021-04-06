@@ -11,8 +11,6 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const PLATFORMS = ["Check Piazza", "Watch Lecture Video", "Attend office hours", "Homework"];
-
 export default class Day extends React.Component {
     constructor(props) {
         super(props);
