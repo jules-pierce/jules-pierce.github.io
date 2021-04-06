@@ -14,6 +14,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -63,7 +64,13 @@ export default class App extends React.Component {
               <Nav.Link href="/">Get Feedback</Nav.Link>
               <Nav.Link href="/graphs">Graphs</Nav.Link>
               <Nav.Link href="/faq">FAQ</Nav.Link>
-              <Nav.Link href="/about">About Us</Nav.Link>
+              <NavDropdown title="About Us" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/about#team">The Team</NavDropdown.Item>
+                <NavDropdown.Item href="/about#study">The Study</NavDropdown.Item>
+                <NavDropdown.Item href="/about#background">Background</NavDropdown.Item>
+                <NavDropdown.Item href="/about#design">Methodology and Design</NavDropdown.Item>
+                <NavDropdown.Item href="/about#next">Next Steps</NavDropdown.Item>
+              </NavDropdown>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -94,22 +101,4 @@ export default class App extends React.Component {
       </div>
     )
   }
-  // render() {
-  //   return (
-  //     <div className="App">
-  //       <Navbar bg="dark" variant="dark">
-  //         <Navbar.Brand>
-  //           <JournalCode /> {' '}
-  //           Improve your Study Skills!
-  //         </Navbar.Brand>
-  //         <Navbar.Collapse id="basic-navbar-nav">
-  //           <Nav className="mr-auto">
-  //             <Nav.Link>Test</Nav.Link>
-  //           </Nav>
-  //         </Navbar.Collapse>
-  //       </Navbar>
-  //       <LearnForm />
-  //     </div>
-  //   );
-  // }
 }

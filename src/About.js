@@ -18,7 +18,7 @@ export default class About extends React.Component {
     render() {
         return (
             <Container className="mt-4">
-                <h4>The Team</h4>
+                <h4 id="team">The Team</h4>
                 <CardDeck className="mb-4">
                     <Card style={{ width: '18rem' }}>
                         <Image src={aarushi} roundedCircle className="m-2" />
@@ -69,7 +69,7 @@ export default class About extends React.Component {
                         </Card.Body>
                     </Card>
                 </CardDeck>
-                <h4>
+                <h4 id="study">
                     The Study - Learning How To Learn: Identification and categorization
                     of the learning trajectories of students in an introductory programming
                     course
@@ -87,7 +87,7 @@ export default class About extends React.Component {
                     classroom, we have collected students’ dis-identified learning data and analyzed
                     it to create a model for success in an introductory computer science course.
                 </p>
-                <h4>Background</h4>
+                <h4 id="background">Background</h4>
                 <p>
                     Computer science, and generally STEM fields, are encouraged as fields of study in
                     college for a well-rounded skill set, post-graduate opportunities, and analytic thinking
@@ -122,7 +122,7 @@ export default class About extends React.Component {
                         doi:10.1007/s10956-013-9437-9
                     </li>
                 </ul>
-                <h4> Methodology and Design</h4>
+                <h4 id="design"> Methodology and Design</h4>
                 <Image src={img} fluid />
                 <p>
                     The virtual format of the class, resulting from the COVID-19 pandemic, provided us with a unique
@@ -157,7 +157,7 @@ export default class About extends React.Component {
                         notes/starting assignment/going to OHQ and tend to check piazza daily until the assignment is due).
                     </li>
                 </ul>
-                <h4>Next Steps</h4>
+                <h4 id="next">Next Steps</h4>
                 <p>
                     For the past three semesters (Spring 2020, Fall 2021, and Spring 2021), the university implemented a policy, in
                     which students could choose to take any course (major requirement elective, etc.) for pass/fail grading. This was
