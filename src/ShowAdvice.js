@@ -78,6 +78,8 @@ export default class ShowAdvice extends React.Component {
             ideal: ideal,
             example: example
         };
+
+        this.goBack = this.goBack.bind(this);
     }
 
     calculateDistance(traj, ideal, trajIndex, idealIndex, swaps) {
@@ -97,6 +99,10 @@ export default class ShowAdvice extends React.Component {
         var inPlace = this.calculateDistance(traj, ideal, trajIndex + 1, idealIndex + 1, swaps + 1);
 
         return Math.min(increaseIdeal, increaseTraj, inPlace);
+    }
+
+    goBack() {
+        this.props.back(this.props.traj);
     }
 
     render() {
@@ -133,7 +139,10 @@ export default class ShowAdvice extends React.Component {
                                     </Row>
                                     <Row>
                                         <Col>
-                                            <Button className="float-right" variant="outline-primary">How will changing my trajectory help me?</Button>
+                                            <Button className="float-left" variant="outline-primary" onClick={this.goBack}>Back</Button>
+                                        </Col>
+                                        <Col>
+                                            <Button className="float-right" variant="outline-primary" href="/graphs">How will changing my trajectory help me?</Button>
                                         </Col>
                                     </Row>
                                 </Container>

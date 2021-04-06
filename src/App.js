@@ -22,6 +22,7 @@ export default class App extends React.Component {
 
     this.showTraj = this.showTraj.bind(this);
     this.showAdvice = this.showAdvice.bind(this);
+    this.showForm = this.showForm.bind(this);
   }
 
   componentDidMount() {
@@ -30,16 +31,22 @@ export default class App extends React.Component {
     });
   }
 
+  showForm() {
+    this.setState({
+      home: <LearnForm showTraj={this.showTraj} />
+    });
+  }
+
   showTraj(traj) {
     this.setState({
       trajectory: traj,
-      home: <ShowTraj traj={traj} next={this.showAdvice} />
+      home: <ShowTraj traj={traj} next={this.showAdvice} back={this.showForm} />
     });
   }
 
   showAdvice() {
     this.setState({
-      home: <ShowAdvice traj={this.state.trajectory} />
+      home: <ShowAdvice traj={this.state.trajectory} back={this.showTraj} />
     })
   }
 

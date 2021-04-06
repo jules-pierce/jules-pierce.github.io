@@ -35,6 +35,9 @@ export default class ShowTraj extends React.Component {
                                     </Row>
                                     <Row>
                                         <Col>
+                                            <Button className="float-left" variant="outline-primary" onClick={this.props.back}>Back</Button>
+                                        </Col>
+                                        <Col>
                                             <Button className="float-right" variant="outline-primary" onClick={this.props.next}>Next</Button>
                                         </Col>
                                     </Row>
