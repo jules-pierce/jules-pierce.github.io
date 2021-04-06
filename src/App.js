@@ -10,7 +10,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { JournalCode } from 'react-bootstrap-icons';
 import { Nav } from 'react-bootstrap';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Switch
 } from 'react-router-dom';
