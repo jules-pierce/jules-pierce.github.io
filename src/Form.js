@@ -66,7 +66,7 @@ export default class LearnForm extends React.Component {
                         </p>
                     </Col>
                 </Row>
-                <Row>
+                <Row md={2} className="justify-content-md-center">
                     {DAYS.map((day, index) => (
                         <Col className="mt-2">
                             <Day setTraj={this.setTraj} index={index} getTraj={this.getTraj} day={DAYS[index]} />
